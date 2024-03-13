@@ -1,0 +1,331 @@
+import React, { useContext, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import StudentContext from "../contextstate/StudentContext";
+
+const Registration = () => {
+  const context = useContext(StudentContext);
+  const { insertDetails } = context;
+  const navigate = useNavigate();
+  const { token } = useParams();
+  const [credentials, setCredentials] = useState({
+    name: localStorage.getItem("name"),
+    email: localStorage.getItem("email"),
+    phone: "",
+    passing_year: "",
+    dob: "",
+    address: "",
+    business_organization: "",
+    position: "",
+    profession: "",
+    website: "",
+    comments: "",
+    profile_img: "",
+  });
+
+  const onChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
+  const handleUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setCredentials({ ...credentials, profile_img: base64 });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    insertDetails(
+      credentials.name,
+      credentials.email,
+      credentials.address,
+      credentials.business_organization,
+      credentials.comments,
+      credentials.dob,
+      credentials.passing_year,
+      credentials.phone,
+      credentials.position,
+      credentials.profession,
+      credentials.website,
+      credentials.profile_img,
+      token
+    ).then((resolve) => {
+      if (resolve) {
+        localStorage.removeItem("email");
+        localStorage.removeItem("name");
+        navigate("/");
+      }
+    });
+  };
+  return (
+    // {/*         This is Registration Form which used after Signup and also we can edit           */}
+    <div className="container">
+      <h2>Registration From</h2>
+      <form action="" onSubmit={handleSubmit}>
+        <div className="input-field">
+          <label>Name</label>
+          <i className="fa fa-user icon"></i>
+          <input
+            type="text"
+            className="inputs"
+            name="name"
+            value={credentials.name}
+            onChange={onChange}
+            readOnly
+          />
+        </div>
+        <div className="input-field">
+          <label>Email</label>
+          <i className="fa fa-envelope icon"></i>
+          <input
+            type="email"
+            className="inputs"
+            name="email"
+            value={credentials.email}
+            onChange={onChange}
+            readOnly
+          />
+        </div>
+        <div className="input-field">
+          <label>Phone No</label>
+          <i className="fa fa-phone icon"></i>
+          <input
+            type="number"
+            className="inputs"
+            name="phone"
+            value={credentials.phone}
+            onChange={onChange}
+          />
+        </div>
+        <div className="input-field">
+          <label>Passing Year</label>
+          <i className="fa-solid fa-people-roof icon"></i>
+          <input
+            type="text"
+            className="inputs"
+            name="passing_year"
+            value={credentials.passing_year}
+            onChange={onChange}
+          />
+        </div>
+        <div className="input-field">
+          <label>Date of Birth</label>
+          <i className="fa-solid fa-people-roof icon"></i>
+          <input
+            type="date"
+            className="inputs"
+            name="dob"
+            value={credentials.dob}
+            onChange={onChange}
+          />
+        </div>
+        <div className="input-field">
+          <label className="message">Address</label>
+          <i className="fa-solid fa-address-book icon textarea-icon"></i>
+          <input
+            type="text"
+            className="textarea"
+            name="address"
+            value={credentials.address}
+            onChange={onChange}
+          />
+          {/* <textarea className="textarea" name="address" value={credentials.address} onChange={onChange}></textarea> */}
+        </div>
+        <div className="input-field">
+          <label>Business / Organization</label>
+          <i className="fa-solid fa-people-roof icon"></i>
+          <input
+            type="text"
+            className="inputs"
+            name="business_organization"
+            value={credentials.business_organization}
+            onChange={onChange}
+          />
+        </div>
+        <div className="input-field">
+          <label>Position</label>
+          <i className="fa-solid fa-people-roof icon"></i>
+          <input
+            type="text"
+            className="inputs"
+            name="position"
+            value={credentials.position}
+            onChange={onChange}
+          />
+        </div>
+        <div className="input-field">
+          <label>Profession</label>
+          <i className="fa-solid fa-people-roof icon"></i>
+          <input
+            type="text"
+            className="inputs"
+            name="profession"
+            value={credentials.profession}
+            onChange={onChange}
+          />
+        </div>
+        <div className="input-field">
+          <label>Website</label>
+          <i className="fa-solid fa-people-roof icon"></i>
+          <input
+            type="text"
+            className="inputs"
+            name="website"
+            value={credentials.website}
+            onChange={onChange}
+          />
+        </div>
+        <div className="input-field">
+          <label>Comments</label>
+          <i className="fa-solid fa-people-roof icon"></i>
+          <input
+            type="text"
+            className="textarea"
+            name="comments"
+            value={credentials.comments}
+            onChange={onChange}
+          />
+          {/* <textarea className="textarea" name="comments" value={credentials.comments} onChange={onChange}></textarea> */}
+        </div>
+        <div className="input-field">
+          <label>Upload Profile Picture</label>
+          <i className="fa fa-upload icon"></i>
+          <label htmlFor="Profile-upload" className="custom-file-upload">
+            <img
+              className="profile-upload-image"
+              src={
+                credentials.profile_img ||
+                "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+              }
+              alt=""
+            />
+          </label>
+          <input
+            type="file"
+            label="Profile"
+            id="Profile-upload"
+            accept=".jpeg .png .jpg"
+            className="inputs"
+            onChange={handleUpload}
+          />
+        </div>
+
+        {/* <div className="input-field">
+                        <label className="gender">Gender</label>
+                        <input type="radio" name="gender" value="male" />Male
+                        <input type="radio" name="gender" value="female" /> Female
+                    </div>
+                    <div className="input-field">
+                        <label>Password</label>
+                        <i className="fa fa-eye-slash icon"></i>
+                        <input type="password" className="inputs" />
+                    </div>
+                    <div className="input-field">
+                        <label className="city">City</label>
+                        <i className="fa fa-list icon"></i>
+                        <select name="city" id="" className="inputs">
+                            <option value="0">Select City</option>
+                            <option value="1">City 1</option>
+                            <option value="2">City 2</option>
+                            <option value="3">City 3</option>
+                            <option value="4">City 4</option>
+                            <option value="5">City 5</option>
+                        </select>
+                    </div>
+                    <div className="input-field">
+                        <label>Zip code</label>
+                        <i className="fa fa-home icon"></i>
+                        <input type="number" className="inputs" />
+                    </div>
+                    <div className="input-field">
+                        <label className="courses">Courses</label>
+                        <input className="" type="checkbox" value="app-development" />App Development
+                        <input className="" type="checkbox" value="marketing" />Marketing
+                        <input className="" type="checkbox" value="editing" />Editing
+                    </div>
+                    <div className="input-field">
+                        <label>Upload CV</label>
+                        <i className="fa fa-upload icon"></i>
+                        <input type="file" className="inputs" />
+                    </div> */}
+
+        <div className="action text-center">
+          <button type="submit" className="submit">
+            Submit
+          </button>
+          <button type="reset" className="reset">
+            Reset
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default Registration;
+
+function convertToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const filereader = new FileReader();
+    filereader.readAsDataURL(file);
+    filereader.onload = () => {
+      resolve(filereader.result);
+    };
+    filereader.onerror = (error) => {
+      reject(error);
+    };
+  });
+}
+
+// const registerStudent = async (
+//   name,
+//   email,
+//   address,
+//   business_organization,
+//   comments,
+//   dob,
+//   passing_year,
+//   phone,
+//   position,
+//   profession,
+//   website,
+//   profile_img
+// ) => {
+//   try {
+//     const response = await fetch(
+//       `http://localhost:4000/api/studentinfo/insertDetails`,
+//       {
+//         method: "PUT",
+//         headers: {
+//           "Content-Type": "application/json",
+//           "auth-token": token,
+//         },
+//         body: JSON.stringify({
+//           name,
+//           email,
+//           address,
+//           business_organization,
+//           comments,
+//           dob,
+//           passing_year,
+//           phone,
+//           position,
+//           profession,
+//           website,
+//           profile_img,
+//         }),
+//       }
+//     );
+//     const result = await response.json();
+//     if (result.success) {
+//       alert("Successfulley Registered");
+//       navigate("/");
+//       localStorage.removeItem("email");
+//       localStorage.removeItem("name");
+//     }
+//     if (!result.success) {
+//       alert("Something went wrong check the console");
+//       console.log(result);
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };

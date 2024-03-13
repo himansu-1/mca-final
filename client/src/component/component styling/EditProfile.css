@@ -1,0 +1,133 @@
+#Profile-upload{
+    display: none;
+}
+.custom-file-upload{
+    margin-left: 1rem;
+    border: 1px solid ;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    cursor: pointer;
+    overflow: hidden;
+
+}
+.profile-upload-image{
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+fieldset {
+    border: 1px solid #d4d4d4;
+    padding: 20px 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  
+  .input-field {
+    display: flex;
+    margin-bottom: 15px;
+  }
+  
+  label {
+    margin-right: 25px;
+    margin-top: 5px;
+    width: 30%;
+    text-align: right;
+    font-weight: bold;
+  }
+  
+  .icon {
+    background: #fcfcfa;
+    color: black;
+    min-width: 40px;
+    border: 2px solid #e2e2e2;
+    border-right: none;
+    text-align: center;
+    padding: 7px;
+  }
+  
+  .inputs {
+    padding: 3px 10px;
+    border: 2px solid #e2e2e2;
+    width: 70%;
+  }
+  
+  input [type="radio"] {
+    margin-right: 8px;
+  }
+  
+  .textarea {
+    padding: 8px;
+    border: 2px solid #e2e2e2;
+  }
+  
+  .textarea-icon {
+    padding-top: 14px;
+  }
+  
+  .button {
+    text-align: center;
+  }
+  
+  .submit {
+    color: white;
+    background: #ee9a25;
+    padding: 9px 25px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #c9c9c9;
+  }
+  
+  .submit:hover {
+    background: #d1871e;
+  }
+  
+  .reset {
+    color: white;
+    background: #c93232;
+    padding: 9px 25px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #c9c9c9;
+  }
+  
+  .reset:hover {
+    background: #a32727;
+  }
+  
+.delete {
+    color: white;
+    background: #3ac932;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #c9c9c9;
+  }
+  
+  .delete:hover {
+    background: #27a329;
+  }
+  
+  .city {
+    margin-left: -6px;
+  }
+  
+  .gender {
+    margin-left: -30px;
+  }
+  
+  .courses {
+    margin-left: -26px;
+  }
+  
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  .message {
+    margin-left: -30px;
+  }
+  
