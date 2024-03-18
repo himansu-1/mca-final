@@ -9,6 +9,7 @@ const Student = (props) => {
 
   useEffect(() => {
     getStudentinfo(props.year)
+    // eslint-disable-next-line
   }, [props.year])
   return (
     <>
@@ -16,7 +17,7 @@ const Student = (props) => {
         <button type="button" className="btn btn-primary py-2 rounded-circle">
           Prev
         </button>
-        <h1>This is Student Information Table</h1>
+        <h3>Member Information</h3>
         <button type="button" className="btn btn-primary py-2 rounded-circle">
           Next
         </button>

@@ -1,0 +1,237 @@
+
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import ProfileCard from "./component/ProfileCard"
+import HomeCarousel from "./component/HomeCarousel"
+import StafCarousel from "./component/StafCarousel"
+import StudentCarousel from "./component/StudentCarousel"
+import StudentList from "./component/StudentList"
+
+
+
+
+const HomeAdmin = () => {
+  const { auth } = useParams();
+  // const auth = params
+  const [credentials, setCredentials] = useState({
+    name: localStorage.getItem("name"),
+    email: localStorage.getItem("email"),
+    phone: "",
+    passing_year: "",
+    dob: "",
+    address: "",
+    business_organization: "",
+    position: "",
+    profession: "",
+    website: "",
+    comments: "",
+    profile_img: "",
+  });
+
+  const onChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
+  const handleUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setCredentials({ ...credentials, profile_img: base64 });
+  };
+
+  function convertToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const filereader = new FileReader();
+      filereader.readAsDataURL(file);
+      filereader.onload = () => {
+        resolve(filereader.result);
+      };
+      filereader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+  useEffect(() => {
+    console.log(auth);
+  }, []);
+  return (
+    <>
+    <div className="d-flex">
+    <h2>Registration From</h2>
+
+      <div className="row">
+        <div className=" col-md-3 w-100">
+          <ProfileCard/>
+        </div>
+        <div className=" col-md-8 w-100">
+          <HomeCarousel/>
+        </div>
+      </div>
+    </div>
+      <div className="container">
+        <h2>Registration From</h2>
+        <form action="" onSubmit={handleSubmit}>
+          <div className="input-field">
+            <label>Name</label>
+            <i className="fa fa-user icon"></i>
+            <input
+              type="text"
+              className="inputs"
+              name="name"
+              value={credentials.name}
+              onChange={onChange}
+              readOnly
+            />
+          </div>
+          <div className="input-field">
+            <label>Email</label>
+            <i className="fa fa-envelope icon"></i>
+            <input
+              type="email"
+              className="inputs"
+              name="email"
+              value={credentials.email}
+              onChange={onChange}
+              readOnly
+            />
+          </div>
+          <div className="input-field">
+            <label>Phone No</label>
+            <i className="fa fa-phone icon"></i>
+            <input
+              type="number"
+              className="inputs"
+              name="phone"
+              value={credentials.phone}
+              onChange={onChange}
+            />
+          </div>
+          <div className="input-field">
+            <label>Passing Year</label>
+            <i className="fa-solid fa-people-roof icon"></i>
+            <input
+              type="text"
+              className="inputs"
+              name="passing_year"
+              value={credentials.passing_year}
+              onChange={onChange}
+            />
+          </div>
+          <div className="input-field">
+            <label>Date of Birth</label>
+            <i className="fa-solid fa-people-roof icon"></i>
+            <input
+              type="date"
+              className="inputs"
+              name="dob"
+              value={credentials.dob}
+              onChange={onChange}
+            />
+          </div>
+          <div className="input-field">
+            <label className="message">Address</label>
+            <i className="fa-solid fa-address-book icon textarea-icon"></i>
+            <input
+              type="text"
+              className="textarea"
+              name="address"
+              value={credentials.address}
+              onChange={onChange}
+            />
+            {/* <textarea className="textarea" name="address" value={credentials.address} onChange={onChange}></textarea> */}
+          </div>
+          <div className="input-field">
+            <label>Business / Organization</label>
+            <i className="fa-solid fa-people-roof icon"></i>
+            <input
+              type="text"
+              className="inputs"
+              name="business_organization"
+              value={credentials.business_organization}
+              onChange={onChange}
+            />
+          </div>
+          <div className="input-field">
+            <label>Position</label>
+            <i className="fa-solid fa-people-roof icon"></i>
+            <input
+              type="text"
+              className="inputs"
+              name="position"
+              value={credentials.position}
+              onChange={onChange}
+            />
+          </div>
+          <div className="input-field">
+            <label>Profession</label>
+            <i className="fa-solid fa-people-roof icon"></i>
+            <input
+              type="text"
+              className="inputs"
+              name="profession"
+              value={credentials.profession}
+              onChange={onChange}
+            />
+          </div>
+          <div className="input-field">
+            <label>Website</label>
+            <i className="fa-solid fa-people-roof icon"></i>
+            <input
+              type="text"
+              className="inputs"
+              name="website"
+              value={credentials.website}
+              onChange={onChange}
+            />
+          </div>
+          <div className="input-field">
+            <label>Comments</label>
+            <i className="fa-solid fa-people-roof icon"></i>
+            <input
+              type="text"
+              className="textarea"
+              name="comments"
+              value={credentials.comments}
+              onChange={onChange}
+            />
+            {/* <textarea className="textarea" name="comments" value={credentials.comments} onChange={onChange}></textarea> */}
+          </div>
+          <div className="input-field">
+            <label>Upload Profile Picture</label>
+            <i className="fa fa-upload icon"></i>
+            <label htmlFor="Profile-upload" className="custom-file-upload">
+              <img
+                className="profile-upload-image"
+                src={
+                  credentials.profile_img ||
+                  "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                }
+                alt=""
+              />
+            </label>
+            <input
+              type="file"
+              label="Profile"
+              id="Profile-upload"
+              accept=".jpeg .png .jpg"
+              className="inputs"
+              onChange={handleUpload}
+            />
+          </div>
+
+          <div className="action text-center">
+            <button type="submit" className="submit">
+              Submit
+            </button>
+            <button type="reset" className="reset">
+              Reset
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
+  );
+};
+
+export default HomeAdmin;

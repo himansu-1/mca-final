@@ -1,15 +1,18 @@
-import React from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import Student from "./Student";
+import StudentContext from "../contextstate/StudentContext";
 
 const SideBar = (props) => {
-  const para = useParams();
+  const context = useContext(StudentContext)
+  const {setShowHeader} = context
+  setShowHeader("")
 
   return (
     <>
       <div className="d-flex justify-content-center m-2">
-        <div className="col-md-2 border border-dark my-2 p-1 justify-content-center">
-          <h1 className=" m-0 px-3 b-0 w-100">Year</h1>
+        <div className="col-md-2 border card my-2 p-1 ">
+          <h3 className=" m-0 px-3 b-0 w-100 text-center pt-2">Year</h3>
           <hr />
           <Link to={`/student/2002`}>
             <button
@@ -36,7 +39,7 @@ const SideBar = (props) => {
             </button>
           </Link>
         </div>
-        <div className="col-md-9 border border-dark m-2">
+        <div className="col-md-9 card border p-2 m-2">
           {
           props.year ? 
           <Student year={props.year}/> :

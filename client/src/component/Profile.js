@@ -5,11 +5,12 @@ import "./component styling/Profile.css";
 
 const Profile = (props) => {
   const context = useContext(StudentContext);
-  const { getStudentbyID } = context;
+  const { getStudentbyID , setShowHeader} = context;
   const { studentId } = useParams();
   const [student, setStudent] = useState({});
 
   useEffect(() => {
+    setShowHeader("d-none")
     getStudentbyID(studentId).then((resolve) => {
       setStudent(resolve);
     });

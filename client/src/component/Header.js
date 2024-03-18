@@ -6,12 +6,13 @@ import StudentContext from "../contextstate/StudentContext";
 const Header = () => {
   const [student, setStudent] = useState({});
   const context = useContext(StudentContext);
-  const { getStudent } = context;
+  const { getStudent , showHeader} = context;
   const location = useLocation();
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("Admin-token");
     handleCloseModal();
     navigate("/");
   };
@@ -37,12 +38,13 @@ const Header = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-  useEffect(() => {
-    console.log(location);
-  }, []);
+  // useEffect(() => {
+    // console.log(location);
+    // eslint-disable-next-line
+  // }, []);
   return (
     <>
-    <div className={`Header ${location==="/student/2002/:studentId"?"d-none":"-none"}`}>
+    <div className={`Header ${showHeader}`}>
       {/*             It is  Header                   */}
       <div className="container">
         <header className="border-bottom lh-1 py-3">
@@ -61,7 +63,8 @@ const Header = () => {
                                 </svg>
                             </a> */}
               <div>
-                {!localStorage.getItem("token") ? (
+                {!localStorage.getItem("Admin-token")?
+                (!localStorage.getItem("token") ? (
                   location.pathname === "/login" ? (
                     <Link
                       className="btn btn-sm btn-outline-secondary "
@@ -87,7 +90,9 @@ const Header = () => {
                       ></i>
                     </h3>
                   </Link>
-                )}
+                )) : <Button className="btn-sm border btn-info text-light" variant="secondary" onClick={handleLogout}>
+                Log-out
+              </Button>}
               </div>
             </div>
           </div>
@@ -117,9 +122,14 @@ const Header = () => {
             <Link className="nav-item nav-link " to="/">
               Technology
             </Link>
-            <Link className="nav-item nav-link " to="/">
-              Design
-            </Link>
+            {
+              localStorage.getItem("Admin-token") ?
+              <Link className="nav-item nav-link " to="/aadmin/home">
+                Admin
+              </Link> :
+              ""
+
+            }
             {/* <Link className="nav-item nav-link " to="/">Culture</Link>
                         <Link className="nav-item nav-link " to="/">Business</Link>
                         <Link className="nav-item nav-link " to="/">Politics</Link>
@@ -133,7 +143,7 @@ const Header = () => {
       </div>
     </div>
       <Modal
-        size="lg"
+        size="xl"
         show={showModal}
         onHide={handleCloseModal}
         backdrop="static"
@@ -143,45 +153,16 @@ const Header = () => {
           <Modal.Title>Hello !!!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-            <div className="row">
-              <div
-                className="bg-body shadow-sm mx-auto col-md-7"
-                style={{ height: "15rem" }}
-              >
-                <div
-                  className=""
-                  style={{ width: "100%", height: "100%", padding: "1rem" }}
-                >
-                  <h2>{student.name}</h2>
-                </div>
-              </div>
-              <div
-                className="bg-body shadow-sm mx-auto"
-                style={{
-                  width: "15rem",
-                  height: "15rem",
-                  borderRadius: "21px 21px 0 0",
-                }}
-              >
-                <div
-                  className=""
-                  style={{ width: "100%", height: "100%", padding: "1rem" }}
-                >
-                  <img
-                    src={
-                      student.profile_img
-                        ? student.profile_img
-                        : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                    }
-                    alt=""
-                    style={{
-                      height: "100%",
-                      width: "100%",
-                      borderRadius: "10px",
-                    }}
-                  />
-                </div>
+          <div className="bg-body-tertiary me-md-3 pt-md-3 px-md-5 text-center overflow-hidden">
+            <div className="row d-flex justify-content-between">
+              <div className="col-md-6 card py-3 px-2 text-start rounded"><h6>{student.name}</h6></div>
+              <div className="col-md-5 card py-3 px-0 rounded">
+              <img
+                      src={student.profile_img || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"}
+                      alt="Admin"
+                      className="rounded m-1"
+                      width=""
+                    />
               </div>
             </div>
           </div>

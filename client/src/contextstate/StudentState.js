@@ -4,6 +4,7 @@ import axios from "axios";
 
 const StudentState = (props) => {
   const [Student, setStudent] = useState([]);
+  const [showHeader,setShowHeader] = useState("")
 
   // getting all notes from DB
   const getStudentinfo = async (year) => {
@@ -195,6 +196,8 @@ const StudentState = (props) => {
         deleteStudent,
         studentLogin,
         studentSignup,
+        showHeader,
+        setShowHeader
       }}
     >
       {props.children}

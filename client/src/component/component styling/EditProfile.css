@@ -1,6 +1,12 @@
+.admin-image{
+  width: 15rem;
+}
 #Profile-upload{
     display: none;
 }
+/* #Profile-upload-1,#Profile-upload-2,#Profile-upload-3{
+    display: none;
+} */
 .custom-file-upload{
     margin-left: 1rem;
     border: 1px solid ;

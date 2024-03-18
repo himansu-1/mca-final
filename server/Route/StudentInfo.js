@@ -6,7 +6,7 @@ const Student = require("../Models/Student")
 const { body, validationResult } = require('express-validator');
 const fetchUser = require("../Middlewere/fetchUser")
 
-
+router.get("/",(req,res)=>{res.send("HeloWorld")})
 // after login or signup students can add their details using : "http://localhost:5555/api/studentinfo/insertDetails"
 router.put("/insertDetails" , fetchUser ,
 [

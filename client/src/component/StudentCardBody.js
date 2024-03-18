@@ -12,9 +12,9 @@ export default function StudentCardBody(props) {
 
     <>
     
-      <div className="card mb-3"  onClick={handleShowModal}>
+      <div className="card border mb-3"  onClick={handleShowModal}>
         <div className="row g-0">
-          <div className="col-md-4 p-2" style={{height:"15rem"}}>
+          <div className="col-md-4 p-2" style={{height:"12rem"}}>
             <img
               src={student.profile_img || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"}
               className="img-fluid rounded h-100 w-100 "
@@ -23,7 +23,7 @@ export default function StudentCardBody(props) {
           </div>
           <div className="col-md-8">
             <div className="card-body">
-              <h5 className="card-title">{student.name}</h5>
+              <h6 className="card-title">{student.name}</h6>
               <p className="card-text m-0">
                 Profession :
                 <small

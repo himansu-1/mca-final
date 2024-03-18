@@ -9,7 +9,8 @@ import EditProfile from "./component/EditProfile";
 import Signup from "./component/Signup";
 import Registration from "./component/Registration";
 import LoginAdmin from "./admin/LoginAdmin";
-// import index from "./component/Registration";
+import HomeAdmin from "./admin/HomeAdmin";
+import Home from "./component/Home";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route exact path="" element={<Header />} />
+          <Route exact path="" element={<Home />} />
 
           <Route exact path="/student" element={<SideBar />}/>
 
@@ -40,9 +41,10 @@ function App() {
   {/* After Sign-up it push to this registration form for register a new student */}
           <Route exact path="/student/authorised/registration/:token" element={<Registration/>}/>
 
-          {/* Administration Penal */}
-          {/* <Route exact path="/aadmin" element={<index />}/> */}
+  {/* Administration Penal */}
+  {/* <Route exact path="/aadmin" element={<index />}/> */}
           <Route exact path="/aadmin/login" element={<LoginAdmin/>}/>
+          <Route exact path="/aadmin/home" element={<HomeAdmin/>}/>
 
         </Routes>
       </BrowserRouter>
