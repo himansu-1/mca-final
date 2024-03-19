@@ -8,7 +8,10 @@ import StudentList from "./component/StudentList";
 const HomeAdmin = () => {
   return (
     <>
-      <h2 className="w-100 m-3">hiii</h2>
+    <div>
+      <h2 className="m-3">This is Admin Control penal</h2>
+
+    </div>
       <div className="d-flex row mx-3"></div>
       <div className="d-flex row mx-3">
         <div className="card my-1">

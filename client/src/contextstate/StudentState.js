@@ -168,22 +168,55 @@ const StudentState = (props) => {
           console.log(result.error)
           return result.success
         }
-        
-        // if (!result.success) {
-        //     alert(result.error)
-        // }
-        // if (result.success) {
-        //     localStorage.setItem("token",result.authToken)
-        //     localStorage.setItem("name",credentials.name)
-        //     localStorage.setItem("email",credentials.email)
-        //     // localStorage.setItem("password",credentials.password)
-        //     alert("Successfully Signup")
-        //     navigate(`/student/authorised/registration/${localStorage.getItem("token")}`)
-        // }
     } catch (error) {
       console.log(error)
     }
 }
+
+// // This is changing function of Admin site 
+const changeAdminOptions = async(adminResult)=>{
+  try {
+    const response = await fetch(
+      `http://localhost:4000/aadmin/home/webPageOptions/editing/${localStorage.getItem("Admin-token")}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(adminResult),
+      }
+    );
+    const result = await response.json();
+    // console.log(adminResult)
+    // console.log(result)
+    return result.success
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// This is only GET option of Admin which get all the images and data "when login"
+const getAdminOptions = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/aadmin/home/webPageOptions/${localStorage.getItem("Admin-token")}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const result = await response.json();
+      // console.log(result.result)
+      // console.log(result)
+      return result.result
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
   return (
     <StudentContext.Provider
       value={{
@@ -197,7 +230,10 @@ const StudentState = (props) => {
         studentLogin,
         studentSignup,
         showHeader,
-        setShowHeader
+        setShowHeader,
+// These are Admin components
+        changeAdminOptions,
+        getAdminOptions,
       }}
     >
       {props.children}
