@@ -13,14 +13,16 @@ const Student = (props) => {
   }, [props.year])
   return (
     <>
-      <div className="d-flex justify-content-between m-2 p-2">
-        <button type="button" className="btn btn-primary py-2 rounded-circle">
+      <div className="d-flex justify-content-center m-2 p-1">
+        {/* <br /> */}
+        {/* <hr className="border-2 mx-2"/> */}
+        {/* <button type="button" className="btn btn-primary py-2 rounded-circle">
           Prev
-        </button>
-        <h3>Member Information</h3>
-        <button type="button" className="btn btn-primary py-2 rounded-circle">
+        </button> */}
+        <h2>Member Information</h2>
+        {/* <button type="button" className="btn btn-primary py-2 rounded-circle">
           Next
-        </button>
+        </button> */}
       </div>
       <hr className="border-2 mx-2" />
       {/* <!-- Content will be loaded here based on the selected year --> */}

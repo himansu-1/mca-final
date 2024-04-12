@@ -1,7 +1,8 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import StudentContext from "../contextstate/StudentContext";
+import '../App.css'
 
 const Header = () => {
   const [student, setStudent] = useState({});
@@ -101,7 +102,7 @@ const Header = () => {
 
       {/*         This is NavBar           */}
       <div className="container">
-        <div className="nav-scroller py-1 mb-3 border-bottom">
+        <div className="nav-scroller py-1 mb-3 my-border">
           <nav className="nav nav-underline justify-content-between">
             <Link
               className={`nav-item nav-link ${
@@ -119,7 +120,16 @@ const Header = () => {
             >
               Student
             </Link>
-            <Link className="nav-item nav-link " to="/">
+            <Link className="nav-item nav-link " to="/experiment">
+              PhD
+            </Link>
+            <Link className="nav-item nav-link " to="/experiment">
+              Faculty 
+            </Link>
+            <Link className="nav-item nav-link " to="/experiment">
+              Research
+            </Link>
+            <Link className="nav-item nav-link " to="/experiment">
               Technology
             </Link>
             {

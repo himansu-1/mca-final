@@ -4,28 +4,28 @@ import StudentContext from "../contextstate/StudentContext";
 
 const Home = () => {
   const context = useContext(StudentContext);
-  const { setShowHeader } = context;
+  const { setShowHeader, getPageData } = context;
   setShowHeader("");
   const [homeContent, sethomeContent] = useState({});
 
-  const getPageData = async () => {
-    try {
-      const response = await fetch(
-        `http://localhost:4000/aadmin/home/webPageOptions`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const result = await response.json();
-      // console.log(result.result.homeCarousel;
-      return result.result[0];
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getPageData = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `http://localhost:4000/aadmin/home/webPageOptions`,
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+  //     const result = await response.json();
+  //     // console.log(result.result.homeCarousel;
+  //     return result.result[0];
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   useEffect(() => {
     getPageData().then((resolve) => {
       sethomeContent({
@@ -53,7 +53,7 @@ const Home = () => {
             </small>
           </p>
         </div>
-        <div class="col col-7 b-2 p-4">
+        <div class="col col-7 b-2 p-4" style={{zIndex:"-1"}}>
           <div
             id="carouselExampleAutoplaying"
             class="carousel slide"

@@ -7,46 +7,7 @@ const HomeCarousel = (props) => {
   const {changeAdminOptions, getAdminOptions} = context
   let [showModal, setShowModal] = useState(false);
   const [adminResult, setAdminResult] = useState({})
-
-  // const changeAdminOptions = async(adminResult)=>{
-  //   try {
-  //     const response = await fetch(
-  //       `http://localhost:4000/aadmin/home/webPageOptions/editing/${localStorage.getItem("Admin-token")}`,
-  //       {
-  //         method: "PUT",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({homeCarousel:adminResult}),
-  //       }
-  //     );
-  //     const result = await response.json();
-  //     console.log(adminResult)
-  //     console.log(result)
-  //     return result.success
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-  // const getAdminOptions = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       `http://localhost:4000/aadmin/home/webPageOptions/${localStorage.getItem("Admin-token")}`,
-  //       {
-  //         method: "GET",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     );
-  //     const result = await response.json();
-  //     console.log(result.result.homeCarousel);
-  //     return result.result
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
+  
   const handleCloseModal = () => {
     setShowModal(false);
   };

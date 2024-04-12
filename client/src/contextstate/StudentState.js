@@ -217,6 +217,24 @@ const getAdminOptions = async () => {
   };
 
 
+  const getPageData = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/aadmin/home/webPageOptions`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const result = await response.json();
+      // console.log(result.result.homeCarousel;
+      return result.result[0];
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <StudentContext.Provider
       value={{
@@ -234,6 +252,7 @@ const getAdminOptions = async () => {
 // These are Admin components
         changeAdminOptions,
         getAdminOptions,
+        getPageData
       }}
     >
       {props.children}

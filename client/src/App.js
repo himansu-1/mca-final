@@ -11,6 +11,7 @@ import Registration from "./component/Registration";
 import LoginAdmin from "./admin/LoginAdmin";
 import HomeAdmin from "./admin/HomeAdmin";
 import Home from "./component/Home";
+import Experiment from "./component/Experiment";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="" element={<Home />} />
 
           <Route exact path="/student" element={<SideBar />}/>
+          <Route exact path="/experiment" element={<Experiment />}/>
 
           <Route exact path="/student/2002" element={<SideBar year={2002}/>}/>
           <Route exact path="/student/2002/:studentId" element={<Profile/>}/>
