@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import StudentCardBody from "./StudentCardBody";
 import StudentContext from "../contextstate/StudentContext";
+import { Link } from "react-router-dom";
 
 const Student = (props) => {
   const context = useContext(StudentContext)
@@ -13,22 +14,35 @@ const Student = (props) => {
   }, [props.year])
   return (
     <>
-      <div className="d-flex justify-content-center m-2 p-1">
+      <div className="d-flex justify-content-between m-4 px-3">
         {/* <br /> */}
         {/* <hr className="border-2 mx-2"/> */}
         {/* <button type="button" className="btn btn-primary py-2 rounded-circle">
           Prev
         </button> */}
-        <h2>Member Information</h2>
+        <h2>Student of Year : {props.year}</h2>
+        
+        <h4>
+<Link to="/student">
+        <i
+              class="fa-solid fa-arrow-left border p-2 rounded shadow"
+              style={{
+                cursor: "pointer",
+                position: "absolute",
+                right: "10px",
+              }}
+              ></i>
+              </Link>
+              </h4>
         {/* <button type="button" className="btn btn-primary py-2 rounded-circle">
           Next
         </button> */}
       </div>
-      <hr className="border-2 mx-2" />
+
       {/* <!-- Content will be loaded here based on the selected year --> */}
-      <div className="mx-3">
+      <div className="mx-3 d-flex p-1">
         {/* <StudentCard /> */}
-        <div className="container">
+        <div className="justify-content-center row">
           {
             Student.map((student) => {
               return <StudentCardBody key={student._id} student={student} year={props.year}/>;

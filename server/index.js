@@ -21,6 +21,9 @@ app.use("/aadmin",require("./Route/AdminAuth.js"))
 app.use("/aadmin/home",require("./Route/AdminData.js"))
 // app.use("/api/notes",require("./routs/notes.js"))
 
+// These are Staf Routing section
+app.use("/staf",require("./Route/StafAuth.js"))
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })

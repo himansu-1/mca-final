@@ -34,13 +34,13 @@ const Home = () => {
         studentCarousel: resolve.studentCarousel,
       });
     });
-    console.log(homeContent);
+    // console.log(homeContent);
   }, []);
   return (
     <>
       <div className="row m-4">
-        {/* <div class="row justify-content-md-center"> */}
-        <div class="col  b-2 p-3 ">
+        {/* <div className="row justify-content-md-center"> */}
+        <div className="col  b-2 p-3 ">
             <div className="d-flex justify-content-center">
                 <h3>This is our University</h3>
 
@@ -53,70 +53,70 @@ const Home = () => {
             </small>
           </p>
         </div>
-        <div class="col col-7 b-2 p-4" style={{zIndex:"-1"}}>
+        <div className="col col-7 b-2 p-4" style={{zIndex:"1"}}>
           <div
             id="carouselExampleAutoplaying"
-            class="carousel slide"
+            className="carousel slide"
             data-bs-ride="carousel"
           >
-            <div class="carousel-inner">
-              <div class="carousel-item active">
+            <div className="carousel-inner rounded">
+              <div className="carousel-item active">
                 <img
                   src={
                     homeContent.homeCarousel
                       ? homeContent.homeCarousel.img_1
                       : ""
                   }
-                  class="d-block w-100"
+                  className="d-block w-100"
                   alt="..."
                 />
               </div>
-              <div class="carousel-item">
+              <div className="carousel-item">
                 <img
                   src={
                     homeContent.homeCarousel
                       ? homeContent.homeCarousel.img_2
                       : ""
                   }
-                  class="d-block w-100"
+                  className="d-block w-100"
                   alt="..."
                 />
               </div>
-              <div class="carousel-item">
+              <div className="carousel-item">
                 <img
                   src={
                     homeContent.homeCarousel
                       ? homeContent.homeCarousel.img_3
                       : ""
                   }
-                  class="d-block w-100"
+                  className="d-block w-100"
                   alt="..."
                 />
               </div>
             </div>
             <button
-              class="carousel-control-prev"
+              className="carousel-control-prev"
               type="button"
               data-bs-target="#carouselExampleAutoplaying"
               data-bs-slide="prev"
             >
               <span
-                class="carousel-control-prev-icon"
+                className="carousel-control-prev-icon"
                 aria-hidden="true"
               ></span>
-              <span class="visually-hidden">Previous</span>
+              <span className="visually-hidden">Previous</span>
             </button>
             <button
-              class="carousel-control-next"
+              className="carousel-control-next"
               type="button"
               data-bs-target="#carouselExampleAutoplaying"
               data-bs-slide="next"
             >
               <span
-                class="carousel-control-next-icon"
+                className="carousel-control-next-icon"
                 aria-hidden="true"
               ></span>
-              <span class="visually-hidden">Next</span>
+              <span className="visually-hidden">Next</span>
             </button>
           </div>
         </div>

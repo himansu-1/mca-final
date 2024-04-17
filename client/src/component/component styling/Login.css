@@ -14,11 +14,11 @@
     box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
   }
   .login-form h1 {
-    padding: 35px 35px 0 35px;
+    padding: 20px 20px 0 20px;
     font-weight: 300;
   }
   .login-form .content {
-    padding: 35px;
+    padding: 20px;
     text-align: center;
   }
   .login-form .input-field {
@@ -60,7 +60,7 @@
     letter-spacing: 0.2px;
     text-transform: uppercase;
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 10px;
   }
   .login-form .action {
     display: -webkit-box;
@@ -109,7 +109,7 @@
   
   .input-field {
     display: flex;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
   
   label {

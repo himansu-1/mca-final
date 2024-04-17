@@ -235,6 +235,72 @@ const getAdminOptions = async () => {
       console.log(error);
     }
   };
+
+    // This is login form setup it saves the Auth-Toke in the localStorage 
+    const stafLogin = async (email,password) => {
+      try {
+        const response = await fetch(`http://localhost:4000/staf/login`, {
+          method: "POST", // or 'PUT'
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
+        });
+        const result = await response.json();
+        result.success?  localStorage.setItem("Staf-token", result.authToken):alert("Enter valid credentials")
+        return result.success
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    // this is for get Staf details using Staf-token
+  const getStaf = async (token) => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/staf/getStaf`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": token,
+          },
+        }
+      );
+      const result = await response.json();
+      // console.log(result.student);
+      return result.staf;
+      // setCredentials(result.student);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+    // this is for get Staf details using Staf-token
+  const getAdmin = async (token) => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/aadmin/getAdminAccount`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": token,
+          },
+        }
+      );
+      const result = await response.json();
+      console.log(result.admin);
+      return result.admin;
+      // setCredentials(result.student);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <StudentContext.Provider
       value={{
@@ -252,7 +318,11 @@ const getAdminOptions = async () => {
 // These are Admin components
         changeAdminOptions,
         getAdminOptions,
-        getPageData
+        getPageData,
+        getAdmin,
+        // These are Staf components
+        stafLogin,
+        getStaf,
       }}
     >
       {props.children}

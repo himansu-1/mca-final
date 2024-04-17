@@ -146,7 +146,7 @@ const EditProfile = () => {
           <i className="fa-solid fa-address-book icon textarea-icon"></i>
           <input
             type="text"
-            className="textarea"
+            className="inputs"
             name="address"
             value={credentials.address}
             onChange={onChange}
@@ -209,10 +209,11 @@ const EditProfile = () => {
           />
           {/* <textarea className="textarea" name="comments" value={credentials.comments} onChange={onChange}></textarea> */}
         </div>
-        <div className="input-field">
+        <div className="input-field rounded">
             <label>Upload Profile Picture</label>
             <i className="fa fa-upload icon"></i>
-            <label htmlFor="Profile-upload" className="custom-file-upload" >
+            <label htmlFor="Profile-upload" className="rounded"
+              style={{height:"200px", width:"200px", right:"20px"}} >
               <img className="profile-upload-image" src={credentials.profile_img || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"} alt=""/>
             </label>
             <input 
@@ -220,7 +221,7 @@ const EditProfile = () => {
               label="Profile" 
               id="Profile-upload" 
               accept=".jpeg .png .jpg" 
-              className="inputs" 
+              className="" 
               onChange={handleUpload}
             />
         </div> 

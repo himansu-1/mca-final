@@ -95,19 +95,6 @@ const HomeCarousel = (props) => {
           <Modal.Title>Hello !!!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* <div className="bg-body-tertiary me-md-3 pt-md-3 px-md-5 text-center overflow-hidden">
-            <div className="row d-flex justify-content-between">
-              <div className="col-md-6 card py-3 px-2 text-start rounded"><h6>name</h6></div>
-              <div className="col-md-5 card py-3 px-0 rounded">
-              <img
-                      src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"}
-                      alt="Admin"
-                      className="rounded m-1"
-                      width=""
-                    />
-              </div>
-            </div>
-          </div> */}
 
           <div className="d-flex justify-content-center">
             <div className="row">

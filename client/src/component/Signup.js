@@ -32,22 +32,22 @@ const Signup = () => {
             <form onSubmit={handleSubmit}>
                 <h1>Sign up Here </h1>
                 <div className="content">
-                    <div className="input-field">
+                    <div className="input-field mb-0">
                         <input type="name" placeholder="Name" autoComplete="nope"
                         name='name' value={credentials.name} onChange={onChange}/>
                     </div>
-                    <div className="input-field">
+                    <div className="input-field mb-0">
                         <input type="email" placeholder="Email" autoComplete="nope" 
                         name='email' value={credentials.email} onChange={onChange} />
                     </div>
-                    <div className="input-field">
+                    <div className="input-field mb-0">
                         <input type="password" placeholder="Password" autoComplete="new-password"                        
                         name='password' value={credentials.password} onChange={onChange} required minLength={4}/>
                     </div>
                     {/* <a href="#/" className="link">Forgot Your Password?</a> */}
                 </div>
                 <div className="action">
-                    <button type='submit' className='active-button'>
+                    <button type='submit' className='active-button p-3'>
                             Sign up
                     </button>
                 </div>

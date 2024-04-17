@@ -12,6 +12,9 @@ import LoginAdmin from "./admin/LoginAdmin";
 import HomeAdmin from "./admin/HomeAdmin";
 import Home from "./component/Home";
 import Experiment from "./component/Experiment";
+import Experiment2 from "./component/Experiment2.js";
+import LoginFaculty from "./component/faculty/LoginFaculty.js";
+import SignupFaculty from "./component/faculty/SignupFaculty.js";
 
 function App() {
   return (
@@ -21,6 +24,7 @@ function App() {
         <Header />
         <Routes>
           <Route exact path="" element={<Home />} />
+          <Route exact path="/exp" element={<Experiment2 />} />
 
           <Route exact path="/student" element={<SideBar />}/>
           <Route exact path="/experiment" element={<Experiment />}/>
@@ -47,6 +51,10 @@ function App() {
   {/* <Route exact path="/aadmin" element={<index />}/> */}
           <Route exact path="/aadmin/login" element={<LoginAdmin/>}/>
           <Route exact path="/aadmin/home" element={<HomeAdmin/>}/>
+
+  {/* Faculty Penal */}
+          <Route exact path="/faculty/login" element={<LoginFaculty/>}/>
+          <Route exact path="/faculty/signup" element={<SignupFaculty/>}/>
 
         </Routes>
       </BrowserRouter>
