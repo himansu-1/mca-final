@@ -84,6 +84,23 @@ const EditProfile = () => {
 
       </div>
       <form action="" onSubmit={handleSubmit}>
+        <div className="input-field rounded">
+            <label>Upload Profile Picture</label>
+            <i className="fa fa-upload icon"></i>
+            <label htmlFor="Profile-upload" className="rounded"
+              style={{height:"200px", width:"200px", right:"20px"}} >
+              <img className="profile-upload-image" src={credentials.profile_img || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"} alt=""/>
+            </label>
+            <input 
+              type="file" 
+              label="Profile" 
+              id="Profile-upload" 
+              accept=".jpeg .png .jpg" 
+              className="" 
+              onChange={handleUpload}
+            />
+        </div> 
+
         <div className="input-field">
           <label>Name</label>
           <i className="fa fa-user icon"></i>
@@ -209,7 +226,7 @@ const EditProfile = () => {
           />
           {/* <textarea className="textarea" name="comments" value={credentials.comments} onChange={onChange}></textarea> */}
         </div>
-        <div className="input-field rounded">
+        {/* <div className="input-field rounded">
             <label>Upload Profile Picture</label>
             <i className="fa fa-upload icon"></i>
             <label htmlFor="Profile-upload" className="rounded"
@@ -224,7 +241,7 @@ const EditProfile = () => {
               className="" 
               onChange={handleUpload}
             />
-        </div> 
+        </div>  */}
 
         {/* <div className="input-field">
                       <label className="gender">Gender</label>

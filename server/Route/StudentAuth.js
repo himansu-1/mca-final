@@ -103,6 +103,7 @@ router.post("/login"
 
             // printing the final user inputed result
             res.json({ success, authToken })
+            console.log(success)
 
         } catch (error) {
             console.log(error)

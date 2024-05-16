@@ -301,6 +301,33 @@ const getAdminOptions = async () => {
     }
   };
 
+
+  const stafSignup = async (name,email,password)=>{
+    try {
+        const response = await fetch(`http://localhost:4000/staf/CreateStaf`,{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body: JSON.stringify({
+                name:name,
+                email:email,
+                password:password
+            })
+        })
+        const result = await response.json()
+        if (result.success) {
+          localStorage.setItem("Staf-token",result.authToken)
+          // localStorage.setItem("name",name)
+          // localStorage.setItem("email",email)
+          return result.success
+        }else{
+          console.log(result.error)
+          return result.success
+        }
+    } catch (error) {
+      console.log(error)
+    }
+}
+
   return (
     <StudentContext.Provider
       value={{
@@ -323,6 +350,7 @@ const getAdminOptions = async () => {
         // These are Staf components
         stafLogin,
         getStaf,
+        stafSignup,
       }}
     >
       {props.children}

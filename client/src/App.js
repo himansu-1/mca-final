@@ -15,6 +15,7 @@ import Experiment from "./component/Experiment";
 import Experiment2 from "./component/Experiment2.js";
 import LoginFaculty from "./component/faculty/LoginFaculty.js";
 import SignupFaculty from "./component/faculty/SignupFaculty.js";
+import CardArea from "./component/faculty/CardArea.js";
 
 function App() {
   return (
@@ -23,7 +24,12 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route exact path="" element={<Home />} />
+          <Route exact path="" element={
+            <>
+            <Home />
+            <CardArea />
+            </>
+          } />
           <Route exact path="/exp" element={<Experiment2 />} />
 
           <Route exact path="/student" element={<SideBar />}/>

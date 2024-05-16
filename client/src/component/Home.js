@@ -27,12 +27,14 @@ const Home = () => {
   //   }
   // };
   useEffect(() => {
+    console.log("hiii")
     getPageData().then((resolve) => {
       sethomeContent({
         homeCarousel: resolve.homeCarousel,
         stafCarousel: resolve.stafData.stafCarousel,
         studentCarousel: resolve.studentCarousel,
       });
+      console.log(resolve)
     });
     // console.log(homeContent);
   }, []);

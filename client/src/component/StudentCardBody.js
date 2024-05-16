@@ -16,8 +16,9 @@ export default function StudentCardBody(props) {
         <div className="row g-0">
           <div className="col-md-4 p-2" style={{height:"12rem"}}>
             <img
+            style={{borderRadius:"45%"}}
               src={student.profile_img || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"}
-              className="img-fluid rounded h-100 w-100 "
+              className="img-fluid h-100 w-100 "
               alt="..."
             />
           </div>

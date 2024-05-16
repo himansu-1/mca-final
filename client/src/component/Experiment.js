@@ -1,62 +1,74 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 
 const Experiment = () => {
-    return <div>
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style={{width: "280px"}}>
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-      <svg class="bi me-2" width="40" height="32"></svg>
-      <span class="fs-4">Sidebar</span>
-    </a>
-    <hr/>
-    <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">
-          <svg class="bi me-2" width="16" height="16"></svg>
-          Home
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-dark">
-          <svg class="bi me-2" width="16" height="16"></svg>
-          Dashboard
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-dark">
-          <svg class="bi me-2" width="16" height="16"></svg>
-          Orders
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-dark">
-          <svg class="bi me-2" width="16" height="16"></svg>
-          Products
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-dark">
-          <svg class="bi me-2" width="16" height="16"></svg>
-          Customers
-        </a>
-      </li>
-    </ul>
-    <hr/>
-    <div class="dropdown">
-      <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"/>
-        <strong>mdo</strong>
-      </a>
-      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li><hr class="dropdown-divider"/></li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
-      </ul>
-    </div>
-  </div>
-  </div>;
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+
+  const handleInputChange = (event) => {
+      setQuery(event.target.value);
+  };
+
+  const performSearch = async () => {
+      if (query.trim() === '') {
+          setResults([]);
+          console.log("success")
+          return;
+      }
+
+      try {
+          const nameResponse = await axios.get(`http://localhost:4000/api/studentinfo/search?name=${query}`);
+          const addressResponse = await axios.get(`http://localhost:4000/api/studentinfo/search?address=${query}`);
+          const orgResponse = await axios.get(`http://localhost:4000/api/studentinfo/search?business_organization=${query}`);
+          
+          const combine = [...nameResponse.data, ...addressResponse.data, ...orgResponse.data]
+          // console.log(combine)
+          const unique = combine.reduce((acc, current)=>{
+            const x = acc.find(item=>item._id === current._id)
+            if (!x) {
+              acc.push(current)
+            }
+            return acc
+          })
+          console.log(unique)
+          // setResults(response.data);
+      } catch (error) {
+          console.error('Error fetching search results:', error);
+      }
+  };
+
+  useEffect(() => {
+      performSearch();
+      results.map((i,index)=>{
+        console.log(index)
+        console.log(i.name)
+        // console.log(i[index].name)
+
+      })
+  }, [query]);
+
+  return (
+      <div>
+          <input 
+              type="text" 
+              value={query} 
+              onChange={handleInputChange} 
+              placeholder="Search by name"
+          />
+          <ul>
+              {
+              results.map((item, index) => (
+                  <>
+                  {/* <li key={index}>{item[index].name}</li>
+                  <li key={index + 1}>{item[index + 1].name}</li>
+                  <li key={index + 2}>{item[index + 2].name}</li> */}
+                  </>
+              ))
+              }
+          </ul>
+      </div>
+  );
 }
 
 export default Experiment;

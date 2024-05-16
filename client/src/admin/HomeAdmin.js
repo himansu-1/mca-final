@@ -20,10 +20,10 @@ const HomeAdmin = () => {
         {/* <div className="card my-1">
           <StafCarousel />
         </div>
-        <div className="card my-1">
-          <StudentCarousel />
-        </div>
-        <div className="card my-1"><StafCarousel /></div> */}
+      <div className="card my-1"><StafCarousel /></div> */}
+      <div className="card my-1">
+        <StudentCarousel />
+      </div>
         <div className="card my-1">
           <StudentList />
         </div>
