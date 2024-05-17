@@ -23,6 +23,7 @@ app.use("/aadmin/home",require("./Route/AdminData.js"))
 
 // These are Staf Routing section
 app.use("/staf",require("./Route/StafAuth.js"))
+app.use("/staf/stafInfo",require("./Route/StafInfo.js"))
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

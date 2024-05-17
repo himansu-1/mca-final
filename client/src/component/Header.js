@@ -158,6 +158,18 @@ const Header = () => {
                 Faculty
               </Link>
             </li>
+            <li>
+              <Link
+                to="/Search"
+                className={`nav-item nav-link ${
+                  location.pathname === "/faculty" ? "active" : ""
+                }`}
+                onClick={handleSideBarClose}
+              >
+                <svg className="bi me-2" width="16" height="16"></svg>
+                Search
+              </Link>
+            </li>
             {localStorage.getItem("Admin-token") ? (
               <li>
                 <Link
@@ -232,17 +244,6 @@ const Header = () => {
                         <strong>{Staf.name}</strong>
                       </React.Fragment>
                     )
-
-                    /* <img
-                      src={
-                        (student?student.profile_img:"") || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                      }
-                      alt=""
-                      width="32"
-                      height="32"
-                      className="rounded-circle me-2"
-                    />
-                    <strong>{student.name}</strong> */
                   }
                 </a>
                 <ul
@@ -282,76 +283,6 @@ const Header = () => {
               Log in
             </Link>
           )}
-          {/* This profile section on sidebar */}
-          {/* {(localStorage.getItem("Admin-token") || localStorage.getItem("Staf-token"))? (
-            !localStorage.getItem("token") ? (
-              location.pathname === "/login" ? (
-                <Link
-                  className="btn btn-sm btn-outline-secondary "
-                  to="/signup"
-                >
-                  Sign up
-                </Link>
-              ) : (
-                <Link
-                  className="btn btn-sm btn-outline-secondary mx-2"
-                  to="/login"
-                >
-                  Log in
-                </Link>
-              )
-            ) : (
-              // This is the Profile Button
-              <Link>
-                <div className="dropdown">
-                  <a
-                    className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
-                    id="dropdownUser2"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <img
-                      src={
-                        (student?student.profile_img:"") || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                      }
-                      alt=""
-                      width="32"
-                      height="32"
-                      className="rounded-circle me-2"
-                    />
-                    <strong>{student.name}</strong>
-                  </a>
-                  <ul
-                    className="dropdown-menu text-small shadow"
-                    aria-labelledby="dropdownUser2"
-                  >
-                    <li>
-                      <a className="dropdown-item" onClick={handleEdit}>
-                        Edit Profile
-                      </a>
-                    </li>
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a className="dropdown-item" onClick={handleShowLogout}>
-                        Sign out
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </Link>
-              // This is admin logout Button
-            )
-          ) : (
-            <Button
-              className="btn-sm border btn-info text-light"
-              variant="secondary"
-              onClick={handleShowLogout}
-            >
-              Log-out
-            </Button>
-          )} */}
         </div>
       </div>
 
@@ -371,144 +302,13 @@ const Header = () => {
                 </Link>
               </div>
               <div>
-                {/* This is Profile Button at Header section */}
-                {/* <div className="col-4 d-flex justify-content-end align-items-center">
-                <div>
-                  {!localStorage.getItem("Admin-token") ? (
-                    !localStorage.getItem("token") ? (
-                      location.pathname === "/login" ? (
-                        <Link
-                          className="btn btn-sm btn-outline-secondary "
-                          to="/signup"
-                        >
-                          Sign up
-                        </Link>
-                      ) : (
-                        <Link
-                          className="btn btn-sm btn-outline-secondary mx-2"
-                          to="/login"
-                        >
-                          Log in
-                        </Link>
-                      )
-                    ) : (
-                      // This is the Profile Button
-                      <Link>
-                        <h3>
-                          <i
-                            className="fa-solid fa-user"
-                            onClick={handleShowModal}
-                          ></i>
-                        </h3>
-                      </Link>
-                      // This is admin logout Button
-                    )
-                  ) : (
-                    <Button
-                      className="btn-sm border btn-info text-light"
-                      variant="secondary"
-                      onClick={handleShowLogout}
-                    >
-                      Log-out
-                    </Button>
-                  )}
-                </div>
-              </div> */}
               </div>
             </div>
           </header>
         </div>
 
-        {/*         This is NavBar           */}
-        <div className="container">
-          {/* <div className="nav-scroller py-1 mb-3 my-border">
-            <nav className="nav nav-underline justify-content-between">
-              <Link
-                className={`nav-item nav-link ${
-                  location.pathname === "/" ? "link-primary active" : ""
-                }`}
-                to="/"
-              >
-                Home
-              </Link>
-              <Link
-                className={`nav-item nav-link ${
-                  location.pathname === "/student" ? "link-primary active" : ""
-                }`}
-                to="/student"
-              >
-                Student
-              </Link>
-              <Link className="nav-item nav-link " to="/experiment">
-                PhD
-              </Link>
-              <Link className="nav-item nav-link " to="/experiment">
-                Faculty
-              </Link>
-              <Link className="nav-item nav-link " to="/experiment">
-                Research
-              </Link>
-              <Link className="nav-item nav-link " to="/experiment">
-                Technology
-              </Link>
-              {localStorage.getItem("Admin-token") ? (
-                <Link className="nav-item nav-link " to="/aadmin/home">
-                  Admin
-                </Link>
-              ) : (
-                ""
-              )}
-            </nav>
-          </div> */}
-        </div>
       </div>
 
-      {/* This is User profile showing modal */}
-      <div>
-        {/* <Modal
-        size="xl"
-        show={showModal}
-        onHide={handleCloseModal}
-        backdrop="static"
-        keyboard={false}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Hello !!!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div className="bg-body-tertiary me-md-3 pt-md-3 px-md-5 text-center overflow-hidden">
-            <div className="row d-flex justify-content-between">
-              <div className="col-md-6 card py-3 px-2 text-start rounded">
-                <h6>{student.name}</h6>
-              </div>
-              <div className="col-md-5 card py-3 px-0 rounded">
-                <img
-                  src={
-                    student.profile_img ||
-                    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                  }
-                  alt="Admin"
-                  className="rounded m-1"
-                  width=""
-                />
-              </div>
-            </div>
-          </div>
-        </Modal.Body>
-        <Modal.Footer className="justify-content-center">
-          <Button className="px-3" variant="secondary" onClick={handleEdit}>
-            Edit
-          </Button>
-          <Button
-            className="px-1"
-            variant="secondary"
-            onClick={handleShowLogout}
-          >
-            Log out
-          </Button>
-        </Modal.Footer>
-      </Modal> */}
-      </div>
 
       {/* This is Logout confirmation showing modal */}
       <Modal show={showLogout} style={{}}>

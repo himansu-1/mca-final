@@ -171,6 +171,17 @@ a {
   transform: scale(1.02)
 }
 
-/* Login form css */
+/* searching section */
+footer {
+  /* position: fixed; */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  /* height: 60px; Adjust according to your footer height */
+  background: #333;
+  color: #fff;
+  text-align: center;
+  line-height: 60px; /* Adjust according to your footer height */
+}
 
 

@@ -12,8 +12,8 @@ export default function StudentCardBody(props) {
 
     <>
     
-      <div className="card border my-1 col-5 mx-1"  onClick={handleShowModal}>
-        <div className="row g-0">
+      <div className="card border my-1 col-5 mx-1"  onClick={handleShowModal} style={{minWidth:'492px', cursor:'pointer'}}>
+        <div className="row g-0" >
           <div className="col-md-4 p-2" style={{height:"12rem"}}>
             <img
             style={{borderRadius:"45%"}}

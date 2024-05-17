@@ -16,6 +16,8 @@ import Experiment2 from "./component/Experiment2.js";
 import LoginFaculty from "./component/faculty/LoginFaculty.js";
 import SignupFaculty from "./component/faculty/SignupFaculty.js";
 import CardArea from "./component/faculty/CardArea.js";
+import Footer from "./component/Footer.js";
+import Search from "./component/Search.js";
 
 function App() {
   return (
@@ -61,8 +63,15 @@ function App() {
   {/* Faculty Penal */}
           <Route exact path="/faculty/login" element={<LoginFaculty/>}/>
           <Route exact path="/faculty/signup" element={<SignupFaculty/>}/>
+          <Route exact path="/search" element={<Search/>}/>
+          <Route exact path="/faculty" element={
+            <>
+            <Home />
+            </>
+          }/>
 
         </Routes>
+        <Footer />
       </BrowserRouter>
     </StudentState>
     </>
@@ -70,3 +79,5 @@ function App() {
 }
 
 export default App;
+
+// https://jubileehall.du.ac.in/?Alumni

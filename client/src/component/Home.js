@@ -8,33 +8,15 @@ const Home = () => {
   setShowHeader("");
   const [homeContent, sethomeContent] = useState({});
 
-  // const getPageData = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       `http://localhost:4000/aadmin/home/webPageOptions`,
-  //       {
-  //         method: "GET",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     );
-  //     const result = await response.json();
-  //     // console.log(result.result.homeCarousel;
-  //     return result.result[0];
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
   useEffect(() => {
-    console.log("hiii")
+    // console.log("hiii")
     getPageData().then((resolve) => {
       sethomeContent({
         homeCarousel: resolve.homeCarousel,
         stafCarousel: resolve.stafData.stafCarousel,
         studentCarousel: resolve.studentCarousel,
       });
-      console.log(resolve)
+      // console.log(resolve)
     });
     // console.log(homeContent);
   }, []);

@@ -300,10 +300,10 @@ const SideBar = (props) => {
               type="button"
               className="btn btn-secondary w-100 btn-block d-flex justify-content-center mb-1 btn-sm"
             >
-              2003
+              2025
             </button>
           </div>
-          <div className="col-1">
+          {/* <div className="col-1">
             <button
               type="button"
               className="btn btn-secondary w-100 btn-block d-flex justify-content-center mb-1 btn-sm"
@@ -398,7 +398,7 @@ const SideBar = (props) => {
             >
               2003
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

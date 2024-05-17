@@ -1,40 +1,40 @@
-import React from 'react';
-import '../component styling/CardArea.css'
+import React, { useEffect, useState } from "react";
+import "../component styling/CardArea.css";
+import SingleCard from "./SingleCard";
+import axios from "axios";
 
 const CardArea = () => {
-    return (
-        <>
-        <div class="box-area">
-        <div class="single-box">
-            <div class="img-area"></div>
-            <div class="img-text">
-                <span class="header-text"><strong>Kay Ferdenad</strong></span>
-                <div class="line"></div>
-                <h3>Designer</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. copesge shskq?</p>
-            </div>
-        </div>
-        <div class="single-box">
-            <div class="img-area"></div>
-            <div class="img-text">
-                <span class="header-text"><strong>David Rayan</strong></span>
-                <div class="line"></div>
-                <h3>Devloper</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. copesge shskq?</p>
-            </div>
-        </div>
-        <div class="single-box">
-            <div class="img-area"></div>
-            <div class="img-text">
-                <span class="header-text"><strong>Handan fashli</strong></span>
-                <div class="line"></div>
-                <h3>Photographer</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. copesge shskq?</p>
-            </div>
-        </div>
-    </div>
-        </>
-    );
-}
+  const [results, setResults] = useState([])
+
+  const getStaf = async () => {
+    const response = await axios.get("http://localhost:4000/staf/stafInfo/getAllStaf")
+    const results = response.data
+    setResults(response.data)
+    // console.log(results)
+  }
+
+  useEffect(() => {
+    getStaf()
+    console.log(results)
+    // results.map((data,index)=>{console.log(data.name)})
+  }, [])
+  return (
+    <>
+      <div className="d-flex justify-content-start mx-5 px-5">
+        <h3>This is the Faculty Section</h3>
+      </div>
+      <hr className="mx-5" />
+      <div class="box-area">
+        {
+          results.map((data, index) => {
+            // <div>helo</div>
+            if (index == 3) {return}
+            return <SingleCard key={data._id} img={data.profile_img} name={data.name} designation={data.email} bio={data.profession} />
+          })
+        }
+      </div>
+    </>
+  );
+};
 
 export default CardArea;
