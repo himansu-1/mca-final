@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../component styling/CardArea.css";
 import SingleCard from "./SingleCard";
 import axios from "axios";
-
+ 
 const CardArea = () => {
   const [results, setResults] = useState([])
 
